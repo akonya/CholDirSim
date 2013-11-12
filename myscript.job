@@ -1,0 +1,7 @@
+#PBS -l walltime=:05:30:00
+#PBS -l nodes=1:ppn=1
+#PBS -N CholDirSim
+#PBS -j oe
+cd $HOME/CholDirSim
+g++ -o run main.cpp -lm
+./run
