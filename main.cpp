@@ -23,16 +23,16 @@
 /**********************************************************************/
 #define PI              3.141592654        //the constant
 
-#define Nsteps          100000             //number of times to itterate the system
+#define Nsteps          200000             //number of times to itterate the system
 #define dt              0.04               //size of each step
-#define Xsize           100                //size of system in X direction
+#define Xsize           200                //size of system in X direction
 #define Ysize           40                 //size of system in Y direction
 #define Zsize           20                 //size of system in Z direction
 #define NP              Xsize*Ysize*Zsize  //number of voxels in the system
 
 #define NeMax           1.7                //max refractive index
 #define No              1.5                //ordinary refractive index
-#define p               6.0               //charachteristic pitch  (I think in units of voxels)
+#define p               8.0               //charachteristic pitch  (I think in units of voxels)
 #define q0              2.0*PI/p           //max q of system
 #define d               3.5                //cell thicknes in microns
 
@@ -159,8 +159,8 @@ int main()
 	for (int step=1;step<Nsteps;step++){
     
     //temperature control
-    if(KbT>0.05 && switcher == 0){
-      KbT = KbT*0.9997;
+    if(KbT>0.04 && switcher == 0){
+      KbT = KbT*0.99995;
     }else{
       switcher = 1;
     //  KbT += 0.000001;
@@ -598,9 +598,9 @@ float calc_torque(vox_struct (&vox)[Xsize][Ysize][Zsize],double KbT)
 	  			vox[i][j][k].ty += Tq[1];
 		  		vox[i][j][k].tz += Tq[2];
           //nb
-        	vox[ib][jb][kb].tx -= Tq[0];
-	  			vox[ib][jb][kb].ty -= Tq[1];
-		  		vox[ib][jb][kb].tz -= Tq[2];
+        	//vox[ib][jb][kb].tx -= Tq[0];
+	  			//vox[ib][jb][kb].ty -= Tq[1];
+		  		//vox[ib][jb][kb].tz -= Tq[2];
       
           //energy from na -> nb interaction
           Eloc += -naDOTnb2-q0*naDOTnb*dot(naCROSSnb,rab);
