@@ -3,7 +3,7 @@ CholDirSim
 
 ## How to use:
 
-#### 1) Clone to your workstation: 
+### 1) Clone to your workstation: 
 
 `git clone https://github.com/akonya/CholDirSim.git`
 
